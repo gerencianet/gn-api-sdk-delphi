@@ -16,7 +16,7 @@ Borland Delphi 7
 
 ## Build
 
-1. In Delphi open the project located in the ```src/dll-src/``` directory;
+1. On Delphi open the project located in the ```src/dll-src/``` directory;
 1. create an output folder and within it create a subfolder for release and another for debug;
 1. In the Delphi Project Manager window edit GerenciaNet.dll build configurations:
  - In Delphi compiler -> Target (Debug configuration - 32 bit Windows platform) -> Output Directory  browse the debug subfolder created in the step 2;
@@ -73,7 +73,7 @@ GerenciaNetAuthorize();
 
 ## Running examples
 
-1. In Delphi Open the GerenciaNetDemo project located in the Demo folder;
+1. On Delphi Open the GerenciaNetDemo project located in the Demo folder;
 1. create an output folder and within it create a subfolder for release and another for debug;
 1. Copy the DLL and config.json file and paste them inside the folders created in the previous step (outuput/debug and output/release);
 1. In the Delphi Project Manager window edit GerenciaDemo.proj build configurations:
