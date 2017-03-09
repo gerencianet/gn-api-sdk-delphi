@@ -10,7 +10,7 @@ For more informations about parameters and values, please refer to [Gerencianet]
 
 ## Tested with
 ```
-Embarcadeiro Delphi Berlin 10.0 Starter
+Embarcadero Delphi Berlin 10.0 Starter
 Borland Delphi 7
 ```
 
@@ -53,7 +53,7 @@ Before consuming any endpoint it is necessary to authenticate in the Gerencianet
 also informing the environment you want to run your application ('sandbox' for Sandbox/ 'api' for Production);
 
 :warning: 
-### The DLL was developed to be backward compatible, ie compatible with older versions of Delphi, but we will only support applications developed in Delphi Berlin 10.x, since it is the only current version of Delphi that company Ebarcadeiro offers support.
+### The DLL was developed to be backward compatible, ie compatible with older versions of Delphi, but we will only support applications developed in Delphi Berlin 10.x, since it is the only current version of Delphi that company Ebarcadero offers support.
 
 
 ### For development environment
