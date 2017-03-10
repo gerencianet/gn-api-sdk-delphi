@@ -80,8 +80,6 @@ GerenciaNetAuthorize(); //autenticando na API Gerencianet
 :warning: 
 ### Esta DLL foi desenvolvida para ser retrocompatível, ou seja, compatível tanto com as versões mais recentes do Delphi quanto as versões mais antigas, no entanto, a Gerencianet somente irá dar suporte à alicações desktop win-32 desenvolvidas no Delphi Berlin 10.x, visto que esta é a versão mais recente do Delphi e é a única versão que é oficial e que ainda está sob suporte da Embarcadero, empresa que distribui o Delphi.
 
-```
-
 ## Rodando a aplicação Demo
 
 1. No Delphi abra o projeto GerenciaNetDemo localizado na pasta 'demo';
