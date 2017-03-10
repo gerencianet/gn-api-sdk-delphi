@@ -82,7 +82,7 @@ GerenciaNetAuthorize(); //autenticando na API Gerencianet
 
 ## Rodando a aplicação Demo
 
-1. No Delphi abra o projeto GerenciaNetDemo localizado na pasta 'demo';
+1. No Delphi abra o projeto GerenciaDemo localizado na pasta 'demo';
 1. Dentro do diretório ```demo/``` crie uma pasta chamada ```output``` e dentro desta pasta crie duas subpastas, uma chamada ```release``` e outra chamada ```debug```
 1. Copie os arquivos GerenciaNet.dll e config.json para dentro das pastas ```demo/output/debug``` e ```demo/output/release``` criadas anteriormente;
 1. No gerenciador de projetos do seu Delphi (No Delphi Berlin é janela Project Manager, localizada no canto superior direito) selecione a edição das configurações de build do seu projeto - ```Build Configurations -> Edit```. Configure os ambientes de compitalação da seguinte forma:
