@@ -16,7 +16,7 @@ Borland Delphi 7
 
 ## Download da SDK
 
-A SDK Delphi disponibilizada pela Gerencianet é composta de uma DLL e duas unidades que fazem a comunicação da sua aplicação com a DLL. Para fazer o download de todo o código fonte da SDK e do projeto de demonstração, clique no [link](/gerencianet/gn-api-sdk-delphi/archive/master.zip).
+A SDK Delphi disponibilizada pela Gerencianet é composta de uma DLL e duas unidades que fazem a comunicação da sua aplicação com a DLL. Para fazer o download de todo o código fonte da SDK e do projeto de demonstração, clique no [link](https://github.com/gerencianet/gn-api-sdk-delphi/archive/master.zip).
 Após concluir o download descompacte o arquivo em alguma pasta de sua preferência.
 
 ## Como gerar a DLL
@@ -31,11 +31,11 @@ Estes passos são opcional desde que você baixe a DLL já compilada da Gerencia
 	- Em Delphi compiler -> menu Target (Release configuration - 32 bit Windows platform) -> "Output Directory" selecione o diretório ```output/release``` criado no passo 3;
 	- Cique em 'OK'.
 1. Faça o download do zip do projeto [x-superobject](https://github.com/onryldz/x-superobject) e descompacte-o em alguma pasta de sua preferência;
-1. Adicione no library path do Delphi o caminho da pasta que você escolheu para armazenar os arquivos da x-supoerobject:
+1. Adicione no library path do Delphi o caminho da pasta que você escolheu para armazenar os arquivos da x-superobject:
   - No Delphi clique em Tools -> Options
   - Na janela que abrir selecione a opção 'Delphi Options' -> 'Library' 
   - Nas configurações selecione a edição do campo 'Library path'
-  - Clique no botão 'browse for folder...' e selecione o diretório onde você baixou e descompatou o projeto x-supoerobject;
+  - Clique no botão 'browse for folder...' e selecione o diretório onde você baixou e descompatou o projeto x-superobject;
   - Clique no botão 'Add' e feche a janela de opções
 
 1. Selecione o ambiente que você deseja compilar a DLL, Release ou Debug, e logo em seguida clique em Run -> Run Withou Debuggin. A DLL Gerencianet será gerada em um dos diretórios que você criou no passo 3, dependendo do ambiente que você escolheu.
@@ -90,17 +90,17 @@ GerenciaNetAuthorize(); //autenticando na API Gerencianet
 	- Em Delphi compiler -> menu Target (Release configuration - 32 bit Windows platform) -> "Output Directory" selecione o diretório ```demo/output/release``` criado no passo 2;
 	- Cique em 'OK'.
 1. Faça o download do zip do projeto [x-superobject](https://github.com/onryldz/x-superobject) e descompacte-o em alguma pasta de sua preferência *;
-1. Adicione no library path do Delphi o caminho da pasta que você escolheu para armazenar os arquivos da x-supoerobject:
+1. Adicione no library path do Delphi o caminho da pasta que você escolheu para armazenar os arquivos da x-superobject:
   - No Delphi clique em Tools -> Options
   - Na janela que abrir selecione a opção 'Delphi Options' -> 'Library' 
   - Nas configurações selecione a edição do campo 'Library path'
-  - Clique no botão 'browse for folder...' e selecione o diretório onde você baixou e descompatou o projeto x-supoerobject;
+  - Clique no botão 'browse for folder...' e selecione o diretório onde você baixou e descompatou o projeto x-superobject;
   - Clique no botão 'Add' e feche a janela de opções
 1. Copie os arquivos ```src/uGerenciaClient.pas``` e ```src/uGerenciaNetClientUtilities.pas``` , disponíveis no zip da SDK que você  baixou neste repositório, para dentro da pasta ```demo/```, ou seja, no mesmo lugar onde os arquivos .pas estão;
 1. Selecione o ambiente que você deseja compilar a aplicação GerenciaDemo, Release ou Debug, e logo em seguida clique em Run -> Run Withou Debuggin. O arquivo executável será gerado em um dos diretórios que você criou no passo 2, dependendo do ambiente que você escolheu.
 
 :warning:
-Se você deseja criar uma aplicação de teste do zero você só precisará importar a biblioteca x-supoerobject se você for usar as funções de manipulação de objecto JSON da mesma. A biblioteca x-superobject será necessária, também, caso você queira compilar o código fonte da DLL.
+Se você deseja criar uma aplicação de teste do zero você só precisará importar a biblioteca x-superobject se você for usar as funções de manipulação de objecto JSON da mesma. A biblioteca x-superobject será necessária, também, caso você queira compilar o código fonte da DLL.
 
 ## Documentação Adicional
 
