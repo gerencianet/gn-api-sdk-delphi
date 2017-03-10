@@ -1,98 +1,112 @@
-# SDK GERENCIANET FOR DELPHI
+# SDK GERENCIANET - DELPHI
 
-Beta SDK for Gerencianet Pagamentos' API.
-For more informations about parameters and values, please refer to [Gerencianet](http://gerencianet.com.br) documentation.
+SDK oficial para API da Gerencianet Pagamentos.
 
 **Em caso de dúvidas, você pode verificar a [Documentação](https://docs.gerencianet.com.br) da API na Gerencianet e, necessitando de mais detalhes ou informações, entre em contato com nossa consultoria técnica, via nossos [Canais de Comunicação](https://gerencianet.com.br/central-de-ajuda).**
 
-## Requirements
-* 32-bit Windows Platform Applications
+## Pré requisitos
+* Aplicaçoes que usarão a SDK devem ser compiladas na plataforma Windows 32-bit;
+* Apenas aplicações Desktop.
 
-## Tested with
+## Testes
 ```
-Embarcadero Delphi Berlin 10.0 Starter
+Embarcadeiro Delphi Berlin 10.0 Starter
 Borland Delphi 7
 ```
 
-## Build
+## Download da SDK
 
-1. On Delphi open the project located in the ```src/dll-src/``` directory;
-1. create an output folder and within it create a subfolder for release and another for debug;
-1. In the Delphi Project Manager window edit GerenciaNet.dll build configurations:
- - In Delphi compiler -> Target (Debug configuration - 32 bit Windows platform) -> Output Directory  browse the debug subfolder created in the step 2;
- - In Delphi compiler -> Target (Release configuration - 32 bit Windows platform) -> Output Directory browse the release subfolder created in the step 2;
-1. Download the x-superobject project from https://github.com/onryldz/x-superobject;
-1. Add the x-superobject path on Delphi's library path:
-  - Follow the menu Tools -> Options -> Delphi Options -> Library and select Library Path browse options;
-  - click on the 'browse for folder' button and select the directory where you downloaded x-superobject project;
-  - click on the add button;
-1. Choice the enviroment you want (Release or Debug) and build the GerenciaNet.dll project. The dll will be generated in the release folder or in the debug folder depending on which environment you chose
+A SDK Delphi disponibilizada pela Gerencianet é composta de uma DLL e duas unidades que fazem a comunicação da sua aplicação com a DLL. Para fazer o download de todo o código fonte da SDK e do projeto de demonstraçã, clique no [link](/gerencianet/gn-api-sdk-delphi/archive/master.zip).
+Após concluir o download descompacte o arquivo em alguma pasta de sua preferência.
 
-* This step is optional since you download the DLL directly through the [link](https://gerencianet.com.br/material/api/delphi/gn-api-dll-delphi.zip)
-* Originally this DLL was builded with Delphi 10.0 Berlin
+## Como gerar a DLL
+
+Estes passos são opcional desde que você baixe a DLL já compilada da Gerencianet através do [link](https://gerencianet.com.br/material/api/delphi/gn-api-dll-delphi.zip). Caso você queira compilar o código da DLL siga as seguintes instruções:
+
+1. Acesse o diretório onde você fez o download e descompactou o arquivo zip contendo o código fonte da DLL;
+1. Dentro do seu Delphi, abra o projeto localizado no diretório ```src/dll-src/```;
+1. Dentro do diretório ```src/dll-src/``` crie uma pasta chamada ```output``` e dentro desta pasta crie duas subpastas, uma chamada ```release``` e outra chamada ```debug```
+1. No gerenciador de projetos do seu Delphi (No Delphi Berlin é janela Project Manager, localizada no canto supoerior direito) selecione a edição das configurações de build do seu projeto - Build Configuration -> Edit. Configure os ambientes de compitalação da seguinte forma:
+	- Em Delphi compiler -> menu Target (Debug configuration - 32 bit Windows platform) -> "Output Directory" selecione o diretório ```output/debug``` criado no passo 3;
+	- Em Delphi compiler -> menu Target (Release configuration - 32 bit Windows platform) -> "Output Directory" selecione o diretório ```output/release``` criado no passo 3;
+	- Cique em 'OK'.
+1. Faça o download do zip projeto [x-superobject](https://github.com/onryldz/x-superobject) e descompacte-o em alguma pasta de sua preferência;
+1. Adicione no library path do Delphi o caminho da pasta que você escolheu para armazenar os arquivos da x-supoerobject:
+  - No Delphi clique em Tools -> Options
+  - Na janela que abrir selecione a opção 'Delphi Options' -> 'Library' 
+  - Nas configuraçõs selecione a edição do campo 'Library path'
+  - Clique no botão 'browse for folder...' e selecione o diretório onde você baixou e descompatou o projeto x-supoerobject;
+  - Clique no botão 'Add' e feche a janela de opçõs
+
+1. Selecione o ambiente que você deseja compilar a DLL, Release ou Debug, e logo em seguida clique em Run -> Run Withou Debuggin. A DLL Gerencianet será gerada em um dos diretórios que você criou no passo 3, dependendo do ambiente que você escolheu.
+
+Obs: Originalmente estes passos foram executados no Delphi Berlin 10.1
+
+## Como importar a SDK no seu projeto
+
+1. Você precisa copiar a DLL da Gerencianet (GerenciaNet.dll) e o arquivo config.json para o mesmo diretório que você definiu como diretório de destino da sua aplicação, por exemplo ```output -> debug``` ou ```output->release```.
+1. Você deverá copiar os arquivos ```src/uGerenciaClient.pas``` e ```src/uGerenciaNetClientUtilities.pas``` , disponíveis no zip da SDK que você  baixou neste repositório, para o diretório raiz de seu projeto, ou seja, no mesmo lugar onde os seus arquivos .pas estão;
+3. Adicione ao seu projeto os arquivos copiados no passo anterios. Isto pode ser feito clicando em 'Project' -> 'Add to project...'.
 
 
-## Installation
+## Usando a SDK Gerencianet
 
-1. You must put the DLL and config.json file in the same folder where the output of your application is configured. In the provided demo application 
-the DLL must be in the ```output/debug``` directory if the application is compiled in debug mode or 
-```output/release``` if the application is compiled in release mode.
-1. To facilitate the communication between your application's and Gerencianet's DLL, 
-we suggest you import the following units into your application:
-  - uGerenciaClient.pas
-  - uGerenciaNetClientUtilities.pas
-
-
-## Getting started
-Require the units:
+Importe as unidades principais:
 ```pascal
 uses uGerenciaClient, uGerenciaNetClientUtilities;
 ```
-The SDK will always return a json string, however any type of parameter or request body (json format) sent in the request of some endpoint must be of type AnsiChar
-Before consuming any endpoint it is necessary to authenticate in the Gerencianet API with your client-id and client-secret,
-also informing the environment you want to run your application ('sandbox' for Sandbox/ 'api' for Production);
 
-:warning: 
-### The DLL was developed to be backward compatible, ie compatible with older versions of Delphi, but we will only support applications developed in Delphi Berlin 10.x, since it is the only current version of Delphi that company Ebarcadero offers support.
+A API sempre irá retornar uma string JSON, portanto qualquer tipo de argumento passado para as funções da SDK devem ser do tipo String.
+Antes de consumir qualquer endpoint da API é necessário:
+	- Carregar a DLL;
+	- Autenticar na API usando a SDK. Nesta autenticação você irá fornecer o seu Client_Id, Client_Secret e o ambiente (sandbox ou produção).
 
+### Autenticando em Sandbox
 
-### For development environment
-Instantiate the DLL passing using your client_id, client_secret and sandbox enviroment:
 ```pascal
-ConfigureService( ToPAnsiChar( ClientID ),ToPAnsiChar( ClientSecret ),'sandbox','config.json',ToPAnsiChar(PartnerToken) );
-GerenciaNetAuthorize();
+EnableService( 'GerenciaNet.dll' ); // carregando a DLL
+ConfigureService( ToPAnsiChar( ClientID ),ToPAnsiChar( ClientSecret ),'sandbox','config.json',ToPAnsiChar(PartnerToken) ); //passando as credenciais para a DLL
+GerenciaNetAuthorize(); //autenticando na API Gerencianet
 ```
 
+### Autenticando em Produção
 
-### For production environment
-To change the environment to production, just do that:
 ```pascal
-ConfigureService( ToPAnsiChar( ClientID ),ToPAnsiChar( ClientSecret ),'api','config.json',ToPAnsiChar(PartnerToken) );
-GerenciaNetAuthorize();
+EnableService( 'GerenciaNet.dll' ); // carregando a DLL
+ConfigureService( ToPAnsiChar( ClientID ),ToPAnsiChar( ClientSecret ),'api','config.json',ToPAnsiChar(PartnerToken) ); //passando as credenciais para a DLL
+GerenciaNetAuthorize(); //autenticando na API Gerencianet
 ```
 
-## Running examples
-
-1. On Delphi Open the GerenciaNetDemo project located in the Demo folder;
-1. create an output folder and within it create a subfolder for release and another for debug;
-1. Copy the DLL and config.json file and paste them inside the folders created in the previous step (outuput/debug and output/release);
-1. In the Delphi Project Manager window edit GerenciaDemo.proj build configurations:
- - In Delphi compiler -> Target (Debug configuration - 32 bit Windows platform) -> Output Directory  browse the debug subfolder created in the step 2;
- - In Delphi compiler -> Target (Release configuration - 32 bit Windows platform) -> Output Directory browse the release subfolder created in the step 2;
-1. Download the x-superobject project from https://github.com/onryldz/x-superobject *;
-1. Add the x-superobject path on Delphi's library path:
-  - Follow the menu Tools -> Options -> Delphi Options -> Library and select Library Path browse options;
-  - click on the 'browse for folder' button and select the directory where you downloaded x-superobject project;
-  - click on the add button;
-1. Copy the fles ```src/uGerenciaClient.pas``` and ```src/uGerenciaNetClientUtilities.pas``` and paste them into the ```demo/``` folder. Add this files to the GerenciaDemo project;
-1. Choice the enviroment you want (Release or Debug) and build the GerenciaDemo project. The .exe will be generated in the release folder or in the debug folder depending on which environment you chose
-
 :warning: 
-If you want to create a demo application from scratch you only need to import the x-superobject library if you are going to use its functions to manipulate json objects or if you wanted to rebuild the source code of the Gerencianet DLL.
+### Esta DLL foi desenvolvida para ser retrocompatível, ou seja, compatível tanto com as versões mais recentes do Delphi quanto as versões mais antigas, no entanto, a Gerencianet somente irá dar suporte à alicações desktop win-32 desenvolvidas no Delphi Berlin 10.x, visto que esta é a versão mais recente do Delphi e é a única versão que é oficial e que ainda está sob suporte da Embarcadero, empresa que distribui o Delphi.
 
-## Additional Documentation
+```
 
-The full documentation with all available endpoints is in https://dev.gerencianet.com.br/.
+## Rodando a aplicação Demo
+
+1. No Delphi abra o projeto GerenciaNetDemo localizado na pasta 'demo';
+1. Dentro do diretório ```demo/``` crie uma pasta chamada ```output``` e dentro desta pasta crie duas subpastas, uma chamada ```release``` e outra chamada ```debug```
+1. Copie os arquivos GerenciaNet.dll e config.json para dentro das pastas ```demo/output/debug``` e ```demo/output/release``` criadas anteriormente;
+1. No gerenciador de projetos do seu Delphi (No Delphi Berlin é janela Project Manager, localizada no canto supoerior direito) selecione a edição das configurações de build do seu projeto - Build Configuration -> Edit. Configure os ambientes de compitalação da seguinte forma:
+	- Em Delphi compiler -> menu Target (Debug configuration - 32 bit Windows platform) -> "Output Directory" selecione o diretório ```demo/output/debug``` criado no passo 2;
+	- Em Delphi compiler -> menu Target (Release configuration - 32 bit Windows platform) -> "Output Directory" selecione o diretório ```demo/output/release``` criado no passo 2;
+	- Cique em 'OK'.
+1. Faça o download do zip projeto [x-superobject](https://github.com/onryldz/x-superobject) e descompacte-o em alguma pasta de sua preferência *;
+1. Adicione no library path do Delphi o caminho da pasta que você escolheu para armazenar os arquivos da x-supoerobject:
+  - No Delphi clique em Tools -> Options
+  - Na janela que abrir selecione a opção 'Delphi Options' -> 'Library' 
+  - Nas configuraçõs selecione a edição do campo 'Library path'
+  - Clique no botão 'browse for folder...' e selecione o diretório onde você baixou e descompatou o projeto x-supoerobject;
+  - Clique no botão 'Add' e feche a janela de opçõs
+1. Copie os arquivos ```src/uGerenciaClient.pas``` e ```src/uGerenciaNetClientUtilities.pas``` , disponíveis no zip da SDK que você  baixou neste repositório, para dentro da pasta ```demo/```, ou seja, no mesmo lugar onde os arquivos .pas estão;
+1. Selecione o ambiente que você deseja compilar a aplicação GerenciaDemo, Release ou Debug, e logo em seguida clique em Run -> Run Withou Debuggin. O arquivo executável será gerado em um dos diretórios que você criou no passo 2, dependendo do ambiente que você escolheu.
+
+:warning:
+Se você deseja criar uma aplicação de teste do zero você só precisará importar a biblioteca x-supoerobject se você for usar as funções de manipulação de objecto JSON da mesma. A biblioteca x-superobject será necessária, também, caso você queira compilar o código fonta da DLL.
+
+## Documentação Adicional
+
+A documentação completa com todos os endpoints disponíveis está em [https://dev.gerencianet.com.br/](https://dev.gerencianet.com.br/).
 
 ## Changelog
 
