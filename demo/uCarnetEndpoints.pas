@@ -109,7 +109,7 @@ FAddress: TAddress;
 const
       Body_Customer_Address = '"street": "Via Monte di Dio",       "number": 66,       "neighborhood": "Sao Paulo",       "complement": "",       "city": "Naples",       "state": "SP",       "zipcode": "35400000"';
       Body_Customer_Before_Address = '"email": "Gorbaboc.Oldbuck@email.com",     "phone_number": "5144916523",     "birth": "1977-07-17",';
-      Body_Customer_After_Address = '"name": "Gorbadoc Oldbuck",     "cpf": "04267484171"';
+      Body_Customer_After_Address = '"name": "Gorbadoc Oldbuck",     "cpf": "94271564656"';
       Body_Customer = '"customer": { '+Body_Customer_Before_Address + '"address": {  '+ Body_Customer_Address + ' }, '+Body_Customer_After_Address + ' }, ';
       Body_After_Customer_Line1 = '"expire_at": "2017-07-10",   "repeats": 4,   "split_items": false,';
       Body_Instructions = '"instructions": [     "inst1",     "inst2",     "inst3",     "inst4"   ], ';
@@ -135,7 +135,7 @@ begin
   Carnet.Repeats := 4;
   Carnet.Customer.Name := 'Gorbadoc Oldbuck';
   Carnet.Customer.Address := FAddress;
-  Carnet.Customer.CPF := '04267484171';
+  Carnet.Customer.CPF := '94271564656';
   Carnet.Customer.Email := 'Gorbaboc.Oldbuck@email.com';
   Carnet.Customer.PhoneNumber := '5144916523';
   Carnet.Customer.Birth := FormatDateTime( 'yyyy-mm-dd',EncodeDate( 1977,7,17 ) );

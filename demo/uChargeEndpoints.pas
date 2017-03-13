@@ -74,7 +74,7 @@ const BodyText = '{'+
           '"zipcode": "35400000"'+
         '},'+
         '"name": "Gorbadoc Oldbuck",'+
-        '"cpf": "04267484171"'+
+        '"cpf": "94271564656"'+
       '},'+
       '"message": "Test",'+
       '"expire_at": "2019-02-21"'+
@@ -96,7 +96,7 @@ begin
   Configuration.Interest := 200;
   Payment := TPrivateBankBilletPayment.Create;
   Payment.Payment.Billet.Customer.Name := 'Gorbadoc Oldbuck';
-  Payment.Payment.Billet.Customer.CPF := '04267484171';
+  Payment.Payment.Billet.Customer.CPF := '94271564656';
   Payment.Payment.Billet.Customer.Email := 'Gorbaboc.Oldbuck@email.com';
   Payment.Payment.Billet.Customer.PhoneNumber := '5144916523';
   Payment.Payment.Billet.Customer.Birth := FormatDateTime( 'yyyy-mm-dd',EncodeDate( 1977,7,17 ) );
@@ -126,7 +126,7 @@ begin
       '"credit_card": {'+
         '"customer": {'+
           '"name": "Gorbadoc Oldbuck",'+
-          '"cpf": "04267484171",'+
+          '"cpf": "94271564656",'+
           '"phone_number": "5144916523",'+
           '"email": "oldbuck@gerencianet.com.br",'+
           '"birth": "1977-01-15"'+

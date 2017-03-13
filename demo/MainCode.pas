@@ -300,7 +300,7 @@ begin
           '"zipcode": "35400000"'+
         '},'+
         '"name": "Gorbadoc Oldbuck",'+
-        '"cpf": "04267484171"'+
+        '"cpf": "94271564656"'+
       '},'+
       '"message": "Test",'+
       '"expire_at": "2019-02-21"'+
