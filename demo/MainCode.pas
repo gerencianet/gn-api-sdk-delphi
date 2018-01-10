@@ -133,8 +133,10 @@ begin
     24 : DisplayServerResponse(UpdateSubscription(Id));
     25 : DisplayServerResponse(CancelSubscription(Id));
     26 : DisplayServerResponse(DeletePlan(Id));
+    27 : DisplayServerResponse(UpdatePlan(Id));
+    28 : DisplayServerResponse(CreateSubscriptionHistory(Id));
     // extras
-    27 : DisplayServerResponse(GetInstallments);
+    29 : DisplayServerResponse(GetInstallments);
   end;
 end;
 
@@ -143,7 +145,7 @@ var Option : Integer;
 begin
   Option := Integer(Actions.ItemIndex);
   case Option of
-    0,9,19,22,27 : begin
+    0,9,19,22,29 : begin
       txtId.Enabled:= False;
       txtCarnetParcel.Enabled := False;
       txtToken.Enabled := False
@@ -153,7 +155,7 @@ begin
       txtCarnetParcel.Enabled := True;
       txtToken.Enabled := False
     end;
-    1,3,4,6,7,10,11,13,14,15,16,17,18,20,21,23,24,25,26 : begin
+    1,3,4,6,7,10,11,13,14,15,16,17,18,20,21,23,24,25,26,27,28 : begin
       txtId.Enabled:= True;
       txtCarnetParcel.Enabled := False;
       txtToken.Enabled := False

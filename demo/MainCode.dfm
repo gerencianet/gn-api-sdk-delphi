@@ -416,6 +416,8 @@ object MainFrm: TMainFrm
       'Update Subscription Metadata'
       'Cancel Subscription'
       'Delete Plan'
+      'Upadte Plan'
+      'Create Subscription History'
       'Get Installments')
   end
   object txtToken: TEdit

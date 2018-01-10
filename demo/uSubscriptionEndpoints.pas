@@ -14,6 +14,8 @@ function PaySubscription(Id: String): String;
 function UpdateSubscription(Id: String): String;
 function CancelSubscription(Id: String): String;
 function DeletePlan(Id: String): String;
+function UpdatePlan(Id: String): String;
+function CreateSubscriptionHistory(Id: String): String;
 
 implementation
 
@@ -139,6 +141,17 @@ begin
     Result := ExecuteGerenciaNetRequest( 'updateSubscriptionMetadata', Params,'', Body );
 end;
 
+function UpdatePlan(Id: String): String;
+var
+  Body: String;
+  Params : String;
+begin
+    Params := CreateRequestParams( [ 'id='+Id ] ).Text;
+    Body :=
+    '{"name": "My new plan" }';
+    Result := ExecuteGerenciaNetRequest( 'updatePlan', Params,'', Body );
+end;
+
 function CancelSubscription(Id: String): String;
 var
   Params: String;
@@ -153,6 +166,16 @@ var
 begin
     Params := CreateRequestParams( [ 'id='+Id ] ).Text;
     Result := ExecuteGerenciaNetRequest( 'deletePlan',Params,'','' );
+end;
+
+function CreateSubscriptionHistory(Id: String): String;
+var
+  Body : String;
+  UpdateParams : String;
+begin
+    UpdateParams := CreateRequestParams( [ 'id='+Id ] ).Text;
+    Body := '{"description": "This subscription is about a service"}';
+    Result := ExecuteGerenciaNetRequest( 'createSubscriptionHistory', UpdateParams, '', Body );
 end;
 
 end.
