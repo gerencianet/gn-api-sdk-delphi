@@ -12,3 +12,6 @@ demo/output/
 demo/*.dcu
 demo/*.res
 demo/__history/
+demo/GerenciaDemo.dproj.local
+demo/GerenciaDemo.identcache
+demo/GerenciaDemo.stat
