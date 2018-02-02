@@ -55,12 +55,20 @@ type
     Panel3: TPanel;
     Label19: TLabel;
     CheckBoxSandbox: TCheckBox;
+    CheckBoxProxy: TCheckBox;
+    txtProxyServer: TLabeledEdit;
+    txtProxyPort: TLabeledEdit;
+    txtProxyUserName: TLabeledEdit;
+    txtProxyPassword: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure ConnectBtnClick(Sender: TObject);
     procedure PaymentBtnClick(Sender: TObject);
     procedure ActionsChange(Sender: TObject);
     procedure ActionBtnClick(Sender: TObject);
     procedure EnableAll;
+    procedure EnableProxy;
+    procedure DisableProxy;
+    procedure CheckBoxProxyClick(Sender: TObject);
   private
     FChargeID: String;
     {$IFDEF UNICODE}
@@ -71,6 +79,10 @@ type
     function getEnviroment: String;
     function GetID: String;
     function GetCarnetParcel: String;
+    function GetProxyServer: String;
+    function GetProxyPort: Integer;
+    function GetProxyUsername: String;
+    function GetProxyPassword: String;
     procedure DisplayServerResponse(Response: String);
   protected
     function GetJSONValue( JSONText, ID: String ) : String;
@@ -80,6 +92,10 @@ type
     property Enviroment : String read getEnviroment;
     property Id: String read GetId;
     property CarnetParcel: String read GetCarnetParcel;
+    property ProxyServer: String read GetProxyServer;
+    property ProxyPort: Integer read GetProxyPort;
+    property ProxyUsername: String read GetProxyUsername;
+    property ProxyPassword: String read GetProxyPassword;
   end;
 
 var
@@ -185,10 +201,37 @@ begin
   txtPhonenumber.Enabled := True;
 end;
 
+procedure TMainFrm.EnableProxy;
+begin
+  txtProxyPort.Enabled := true;
+  txtProxyServer.Enabled := true;
+  txtProxyUserName.Enabled := true;
+  txtProxyPassword.Enabled := true;
+end;
+
+procedure TMainFrm.DisableProxy;
+begin
+  txtProxyPort.Enabled := false;
+  txtProxyServer.Enabled := false;
+  txtProxyUserName.Enabled := false;
+  txtProxyPassword.Enabled := false;
+end;
+
+procedure TMainFrm.CheckBoxProxyClick(Sender: TObject);
+begin
+  if CheckBoxProxy.Checked = true then
+    EnableProxy
+  else DisableProxy;
+end;
+
 procedure TMainFrm.ConnectBtnClick(Sender: TObject);
 begin
+  if (CheckBoxProxy.Checked = true) then
+  begin
+    ConfigureProxy( ToPAnsiChar( ProxyServer ), ToPAnsiChar( ProxyUsername ), ToPAnsiChar( ProxyPassword ), ProxyPort );
+  end;
   ConfigureService( ToPAnsiChar( ClientID ),ToPAnsiChar( ClientSecret ),ToPAnsiChar( Enviroment ),'config.json', '');
-  GerenciaNetAuthorize();
+  DisplayServerResponse(GerenciaNetAuthorize());
   EnableAll;
 end;
 
@@ -208,6 +251,26 @@ end;
 function TMainFrm.GetClientID: String;
 begin
   Result := txtClientID.Text;
+end;
+
+function TMainFrm.GetProxyServer: String;
+begin
+  Result := txtProxyServer.Text;
+end;
+
+function TMainFrm.GetProxyPort: Integer;
+begin
+  Result :=  StrToInt( txtProxyPort.Text );
+end;
+
+function TMainFrm.GetProxyUsername: String;
+begin
+  Result := txtProxyUsername.Text;
+end;
+
+function TMainFrm.GetProxyPassword: String;
+begin
+  Result := txtProxyPassword.Text;
 end;
 
 function TMainFrm.GetClientSecret: String;

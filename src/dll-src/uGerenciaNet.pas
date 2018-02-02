@@ -3,6 +3,7 @@ unit uGerenciaNet;
 interface
 
 procedure ConfigureService( ClientID, ClientSecret,Environment,ConfigFileName, PartnerToken: PAnsiChar );cdecl;export;
+procedure ConfigureProxy( ProxyServer, ProxyUserName, ProxyPassword: PAnsiChar; ProxyPort: Integer );cdecl;export;
 function GerenciaNetService( EndPointOperation, Parameters,OptionalParameters, Body: PAnsiChar ): PAnsiChar;cdecl;export;
 function GerenciaNetTokenExpired: Boolean;cdecl;
 procedure GerenciaNetGetInstanceData( out AccessToken: PAnsiChar );cdecl;
@@ -32,6 +33,14 @@ begin
   uGerenciaNetIndy.Environment  := String( AnsiStrings.StrPas( Environment ) );
   uGerenciaNetIndy.ConfigFileName := String( AnsiStrings.StrPas( ConfigFileName ) );
   uGerenciaNetIndy.PartnerToken := String( AnsiStrings.StrPas( PartnerToken ) );
+end;
+
+procedure ConfigureProxy( ProxyServer, ProxyUserName, ProxyPassword: PAnsiChar; ProxyPort: Integer );
+begin
+  uGerenciaNetIndy.ProxyServer := String( AnsiStrings.StrPas( ProxyServer ) );
+  uGerenciaNetIndy.ProxyPort :=  ProxyPort;
+  uGerenciaNetIndy.ProxyUserName  := String( AnsiStrings.StrPas( ProxyUserName ) );
+  uGerenciaNetIndy.ProxyPassword := String( AnsiStrings.StrPas( ProxyPassword ) );
 end;
 
 function GerenciaNetService( EndPointOperation, Parameters, OptionalParameters, Body: PAnsiChar ): PAnsiChar;cdecl;

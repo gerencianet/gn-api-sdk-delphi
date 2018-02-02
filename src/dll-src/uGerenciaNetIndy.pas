@@ -8,14 +8,17 @@ function GerenciaPost( EndPoint, Body: String;Parameters: TStringList;OptionalPa
 function GerenciaPut( EndPoint, Body: String;Parameters: TStringList;OptionalParameters: TStringList ) : String;
 function GerenciaDelete( EndPoint: String;Parameters: TStringList;OptionalParameters: TStringList ) : String;
 function GerenciaGet( EndPoint: String;Parameters: TStringList;OptionalParameters: TStringList ) : String;
+procedure GerencianetProxy();
 
 function TokenExpired: Boolean;
 
 threadvar ClientID, ClientSecret, Environment, ConfigFileName,
-          AccessToken, TokenType, PartnerToken: String;
+          AccessToken, TokenType, PartnerToken, ProxyServer,
+          ProxyUserName, ProxyPassword: String;
+          ProxyPort: Integer;
           ExpireDateTime : TDateTime;
 
-const API_SDK = 'delphi-1.0.0';
+const API_SDK = 'delphi-2.0.0';
 
 implementation
 
@@ -45,6 +48,7 @@ end;
 function SetupClient: TIdHTTP;
 begin
   Result := TIdHTTP.Create( nil );
+
   Result.ConnectTimeout := 20000;
   Result.HTTPOptions := Result.HTTPOptions + [hoWantProtocolErrorContent]+ [ hoNoProtocolErrorException ];
   {$IFDEF DEBUG}
@@ -58,6 +62,7 @@ var TemplateURL : String;
 begin
   HttpClient.Free;
   HttpClient := SetupClient;
+  GerencianetProxy(); // verify proxy existence
   TemplateURL := FullBaseUrl +EndPoint;
   Result.URL := TUrlResolver.ResolveURLParameters( TemplateURL,Parameters );
   Result.URL := TUrlResolver.ResolveOptionalParameters( Result.URL,OptionalParameters );
@@ -147,9 +152,27 @@ begin
   end;
 end;
 
+procedure GerencianetProxy();
+begin
+  if (ProxyServer <> '') then
+  begin
+     HttpClient.ProxyParams.ProxyServer := ProxyServer;
+     HttpClient.ProxyParams.ProxyPort := ProxyPort;
+     if ( ( ProxyUserName <> '' ) and ( ProxyPassword <> '') ) then
+     begin
+        HttpClient.ProxyParams.BasicAuthentication := True;
+        HttpClient.ProxyParams.ProxyUsername := ProxyUserName;
+        HttpClient.ProxyParams.ProxyPassword := ProxyPassword;
+     end;
+  end;
+end;
+
 initialization
 begin
   HttpClient := TIdHTTP.Create( nil );
+
+  GerencianetProxy();
+
   {$IFDEF DEBUG}
   HttpLog := TIdLogFile.Create( nil );
   HttpClient.Intercept := HttpLog;

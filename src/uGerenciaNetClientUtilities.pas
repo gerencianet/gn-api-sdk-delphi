@@ -8,7 +8,7 @@ uses
 function ToPAnsiChar( AStr: String ) : TGerenciaChar;
 function CreateRequestParams( ParamArray: array of string ) : TStringList;
 function ExecuteGerenciaNetRequest(EndPointName, Params, OptionalParams, Body: String): String;
-procedure GerenciaNetAuthorize;
+function GerenciaNetAuthorize: String;
 
 implementation
 
@@ -19,13 +19,20 @@ uses
   SysUtils
   {$ENDIF};
 
-procedure GerenciaNetAuthorize;
+function GerenciaNetAuthorize : String;
 const BodyText = '{"grant_type":"client_credentials"}';
 var
     Body: TGerenciaChar;
+    Retorno: String;
 begin
   Body := ToPAnsiChar( BodyText );
-  GerenciaNetService('authorize', '', '', Body);
+  try
+    Retorno := String( GerenciaNetService('authorize', '', '', Body) );
+  finally
+    if ( Retorno <> '' ) then
+      Result := 'Connected'
+    else Result := 'Fail to connect';
+  end;
 end;
 
 function ExecuteGerenciaNetRequest(EndPointName, Params, OptionalParams,

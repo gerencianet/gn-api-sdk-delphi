@@ -22,6 +22,7 @@ uses
 
 exports
   ConfigureService name 'ConfigureService',
+  ConfigureProxy name 'ConfigureProxy',
   GerenciaNetService name 'GerenciaNet',
   GerenciaNetTokenExpired name 'GerenciaNetTokenExpired',
   GerenciaNetGetInstanceData name 'GerenciaNetGetInstanceData';
