@@ -63,7 +63,7 @@ Antes de consumir qualquer endpoint da API é necessário:
 
 ### Configurando Proxy
 
-A DLL permite que vcê configure saída por proxy em sua aplicação Delphi:
+A DLL permite a configuração de saída por proxy em sua aplicação Delphi:
 
 ```pascal
 ConfigureProxy( ToPAnsiChar( ProxyServer ), ToPAnsiChar( ProxyUsername ), ToPAnsiChar( ProxyPassword ), ProxyPort );
