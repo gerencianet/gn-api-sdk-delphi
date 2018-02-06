@@ -61,6 +61,14 @@ Antes de consumir qualquer endpoint da API é necessário:
 * Carregar a DLL;
 * Autenticar na API usando a SDK. Nesta autenticação você irá fornecer o seu Client_Id, Client_Secret e o ambiente (sandbox ou produção).
 
+### Configurando Proxy
+
+A DLL permite que vcê configure saída por proxy em sua aplicação Delphi:
+
+```pascal
+ConfigureProxy( ToPAnsiChar( ProxyServer ), ToPAnsiChar( ProxyUsername ), ToPAnsiChar( ProxyPassword ), ProxyPort );
+```
+
 ### Autenticando em Sandbox
 
 ```pascal
