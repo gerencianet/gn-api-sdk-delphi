@@ -120,18 +120,17 @@ var Option : Integer;
 begin
   Option := Integer(Actions.ItemIndex);
   case Option of
-    0 : DisplayServerResponse(CarnetCreate);
-    1 : DisplayServerResponse(DetailCarnet(Id));
-    2 : DisplayServerResponse(UpdateParcel(Id, CarnetParcel));
-    3 : DisplayServerResponse(UpdateCarnetMetadata(Id));
-    4 : DisplayServerResponse(ResendCarnet(Id));
-    5 : DisplayServerResponse(ResendParcel(Id, CarnetParcel));
-    6 : DisplayServerResponse(CreateCarnetHistory(Id));
-    7 : DisplayServerResponse(CancelCarnet(Id));
-    8 : DisplayServerResponse(CancelParcel(Id, CarnetParcel));
-    // charges
-    9 : DisplayServerResponse(CreateCharge);
-    10: DisplayServerResponse(DetailCharge(Id));
+    0  : DisplayServerResponse(CarnetCreate);
+    1  : DisplayServerResponse(DetailCarnet(Id));
+    2  : DisplayServerResponse(UpdateParcel(Id, CarnetParcel));
+    3  : DisplayServerResponse(UpdateCarnetMetadata(Id));
+    4  : DisplayServerResponse(ResendCarnet(Id));
+    5  : DisplayServerResponse(ResendParcel(Id, CarnetParcel));
+    6  : DisplayServerResponse(CreateCarnetHistory(Id));
+    7  : DisplayServerResponse(CancelCarnet(Id));
+    8  : DisplayServerResponse(CancelParcel(Id, CarnetParcel));
+    9  : DisplayServerResponse(CreateCharge);
+    10 : DisplayServerResponse(DetailCharge(Id));
     11 : DisplayServerResponse(PayChargeWithBillet(Id));
     12 : DisplayServerResponse(PayChargeWithCard(Id, txtToken.Text));
     13 : DisplayServerResponse(CancelCharge(Id));
@@ -140,7 +139,6 @@ begin
     16 : DisplayServerResponse(ResendBillet(Id));
     17 : DisplayServerResponse(UpdateBillet(Id));
     18 : DisplayServerResponse(UpdateChargeMetadata(Id));
-    // subscriptions
     19 : DisplayServerResponse(CreatePlan);
     20 : DisplayServerResponse(CreateSubscription(Id));
     21 : DisplayServerResponse(DetailSubscription(Id));
@@ -151,8 +149,8 @@ begin
     26 : DisplayServerResponse(DeletePlan(Id));
     27 : DisplayServerResponse(UpdatePlan(Id));
     28 : DisplayServerResponse(CreateSubscriptionHistory(Id));
-    // extras
     29 : DisplayServerResponse(GetInstallments);
+    30 : DisplayServerResponse(CreateChargeBalanceSheet(Id));
   end;
 end;
 
@@ -171,7 +169,7 @@ begin
       txtCarnetParcel.Enabled := True;
       txtToken.Enabled := False
     end;
-    1,3,4,6,7,10,11,13,14,15,16,17,18,20,21,23,24,25,26,27,28 : begin
+    1,3,4,6,7,10,11,13,14,15,16,17,18,20,21,23,24,25,26,27,28,30 : begin
       txtId.Enabled:= True;
       txtCarnetParcel.Enabled := False;
       txtToken.Enabled := False

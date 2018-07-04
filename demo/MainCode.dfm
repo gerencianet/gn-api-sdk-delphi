@@ -494,7 +494,8 @@ object MainFrm: TMainFrm
       'Delete Plan'
       'Upadte Plan'
       'Create Subscription History'
-      'Get Installments')
+      'Get Installments'
+      'Create Charge Balance Sheet ')
   end
   object txtToken: TEdit
     Left = 108
