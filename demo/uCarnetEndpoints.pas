@@ -15,6 +15,7 @@ function UpdateCarnetMetadata(CarnetID: String): String;
 function ResendCarnet(CarnetID: String): String;
 function ResendParcel(CarnetID, CarnetParcel:  String): String;
 function CreateCarnetHistory(CarnetID: String): String;
+function SettleCarnetParcel(CarnetID, CarnetParcel: String): String;
 
 implementation
 
@@ -148,6 +149,14 @@ begin
   {$ELSE}
     Result := ExecuteGerenciaNetRequest( 'createCarnet','','',Body );
   {$ENDIF}
+end;
+
+function SettleCarnetParcel(CarnetID, CarnetParcel:  String): String;
+var
+  SettleCarnetParcelParams: String;
+begin
+    SettleCarnetParcelParams := CreateRequestParams( [ 'id='+CarnetID, 'parcel='+CarnetParcel ] ).Text;
+    Result := ExecuteGerenciaNetRequest( 'settleCarnetParcel', SettleCarnetParcelParams, '', '' );
 end;
 
 end.

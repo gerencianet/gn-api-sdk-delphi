@@ -17,6 +17,7 @@ function ResendBillet(Id: String): String;
 function UpdateBillet(Id: String): String;
 function UpdateChargeMetadata(Id: String): String;
 function CreateChargeBalanceSheet(Id: String): String;
+function SettleCharge(Id: String): String;
 
 implementation
 
@@ -222,6 +223,14 @@ begin
     '{"custom_id": "Product10",'+
      '"notification_url": "http://domain.com/notification" }';
     Result := ExecuteGerenciaNetRequest( 'updateChargeMetadata', Params, '', Body );
+end;
+
+function SettleCharge(Id: String): String;
+var
+  Params : String;
+begin
+    Params := CreateRequestParams( [ 'id='+Id ] ).Text;
+    Result := ExecuteGerenciaNetRequest( 'settleCharge', Params, '', '' );
 end;
 
 

@@ -151,6 +151,8 @@ begin
     28 : DisplayServerResponse(CreateSubscriptionHistory(Id));
     29 : DisplayServerResponse(GetInstallments);
     30 : DisplayServerResponse(CreateChargeBalanceSheet(Id));
+    31 : DisplayServerResponse(SettleCharge(Id));
+    32 : DisplayServerResponse(settleCarnetParcel(Id, CarnetParcel));
   end;
 end;
 
@@ -164,12 +166,12 @@ begin
       txtCarnetParcel.Enabled := False;
       txtToken.Enabled := False
     end;
-    2,5,8 : begin
+    2,5,8,32 : begin
       txtId.Enabled:= True;
       txtCarnetParcel.Enabled := True;
       txtToken.Enabled := False
     end;
-    1,3,4,6,7,10,11,13,14,15,16,17,18,20,21,23,24,25,26,27,28,30 : begin
+    1,3,4,6,7,10,11,13,14,15,16,17,18,20,21,23,24,25,26,27,28,30,31 : begin
       txtId.Enabled:= True;
       txtCarnetParcel.Enabled := False;
       txtToken.Enabled := False
