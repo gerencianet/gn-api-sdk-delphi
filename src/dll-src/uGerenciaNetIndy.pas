@@ -18,11 +18,11 @@ threadvar ClientID, ClientSecret, Environment, ConfigFileName,
           ProxyPort: Integer;
           ExpireDateTime : TDateTime;
 
-const API_SDK = 'delphi-2.0.0';
+const API_SDK = 'delphi-3.0.1';
 
 implementation
 
-uses SysUtils, idHTTP, idLogFile, uGerenciaTools, idStackConsts,idSocketHandle;
+uses SysUtils, idHTTP, idLogFile, uGerenciaTools, idStackConsts, idSocketHandle, IdSSLOpenSSL, IdIOHandler;
 
 Type
 
@@ -51,6 +51,9 @@ begin
 
   Result.ConnectTimeout := 20000;
   Result.HTTPOptions := Result.HTTPOptions + [hoWantProtocolErrorContent]+ [ hoNoProtocolErrorException ];
+  Result.IOHandler := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
+  TIdSSLIOHandlerSocketOpenSSL(Result.IOHandler).SSLOptions.SSLVersions := [sslvTLSv1_2];
+
   {$IFDEF DEBUG}
     Result.Intercept := HttpLog;
   {$ENDIF}
@@ -74,6 +77,7 @@ begin
   else Result.Body := nil;
   HttpClient.Request.ContentType := 'application/json';
   HttpClient.Request.Accept := 'application/json';
+  HttpClient.Request.UserAgent := 'User-Agent: Mozilla/3.0 (compatible; Indy Library)';
   if IsOAuth then
   begin
     HttpClient.Request.BasicAuthentication := True;
