@@ -21,7 +21,7 @@ Após concluir o download descompacte o arquivo em alguma pasta de sua preferên
 
 ## Como gerar a DLL
 
-Estes passos são opcional desde que você baixe a DLL já compilada da Gerencianet através do [link](https://gerencianet.com.br/material/api/delphi/gn-api-dll-delphi.zip). Caso você queira compilar o código da DLL siga as seguintes instruções:
+Estes passos são opcional desde que você baixe a DLL já compilada da Gerencianet através do [link](https://github.com/gerencianet/gn-api-sdk-delphi/tree/master/src/dll-compilada). Caso você queira compilar o código da DLL siga as seguintes instruções:
 
 1. Acesse o diretório onde você fez o download e descompactou o arquivo zip contendo o código fonte da DLL;
 1. Dentro do seu Delphi, abra o projeto localizado no diretório ```src/dll-src/```;

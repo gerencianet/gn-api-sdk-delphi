@@ -28,7 +28,7 @@ Borland Delphi 7
   - click on the add button;
 1. Choice the enviroment you want (Release or Debug) and build the GerenciaNet.dll project. The dll will be generated in the release folder or in the debug folder depending on which environment you chose
 
-* This step is optional since you download the DLL directly through the [link](https://gerencianet.com.br/material/api/delphi/gn-api-dll-delphi.zip)
+* This step is optional since you download the DLL directly through the [link](https://github.com/gerencianet/gn-api-sdk-delphi/tree/master/src/dll-compilada)
 * Originally this DLL was builded with Delphi 10.0 Berlin
 
 
