@@ -10,6 +10,8 @@ function CreateCharge: String;
 function DetailCharge(Id: String): String;
 function PayChargeWithBillet(Id: String): String;
 function PayChargeWithCard(Id, Token: String): String;
+function PayOneStepWithBillet: String;   //one step billet
+function PayOneStepWithCard: String;   //one step card
 function CancelCharge(Id: String): String;
 function CreateChargeHistory(Id: String): String;
 function LinkCharge(Id: String): String;
@@ -149,6 +151,106 @@ begin
 
   PaymentParams := CreateRequestParams( [ 'id='+Id ] ).Text;
   Result := ExecuteGerenciaNetRequest( 'payCharge',PaymentParams,'',Body );
+end;
+
+
+//one step billet
+function PayOneStepWithBillet: String;
+var
+    Body: String;
+
+begin
+  Body :=
+  '{'+
+   '"metadata": {'+
+     '"custom_id": "sou_fera_0007",'+
+     '"notification_url": "https://url-do-cliente.com.br/"'+
+   '},'+
+   '"payment": {'+
+     '"banking_billet": {'+
+       '"configurations": {'+
+         '"fine": 200,'+
+         '"interest": 33'+
+       '},'+
+       '"conditional_discount": {'+
+         '"until_date": "2019-08-30",'+
+         '"type": "percentage",'+
+         '"value": 500'+
+       '},'+
+       '"discount": {'+
+         '"type": "currency",'+
+         '"value": 599'+
+       '},'+
+       '"expire_at": "2019-09-15",'+
+       '"customer": {'+
+         '"name": "Gorbadoc Oldbuck",'+
+         '"cpf": "94271564656",'+
+         '"phone_number": "5144916523"'+
+       '}'+
+     '}'+
+   '},'+
+   '"items": ['+
+     '{'+
+       '"amount": 1,'+
+       '"name": "Item 1",'+
+       '"value": 600'+
+     '},'+
+     '{'+
+       '"amount": 1,'+
+       '"name": "Item 2",'+
+       '"value": 1000'+
+     '}'+
+   ']'+
+  '}';
+
+  Result := ExecuteGerenciaNetRequest( 'payOneStep','','',Body );
+end;
+
+//one step card
+function PayOneStepWithCard: String;
+var
+    Body: String;
+
+begin
+  Body :=
+  '{'+
+    '"items": ['+
+      '{'+
+        '"name": "Product 1",'+
+        '"value": 590,'+
+        '"amount": 2'+
+      '}'+
+    '],'+
+    '"shippings": ['+
+      '{'+
+        '"name": "Default Shipping Cost",'+
+        '"value": 10'+
+      '}'+
+    '],'+
+    '"payment": {'+
+      '"credit_card": {'+
+        '"installments": 1,'+
+        '"payment_token": "fd6c81e1b812afcf9b57158207af3edfdb1e3ec0",'+
+        '"billing_address": {'+
+          '"street": "Av. JK",'+
+          '"number": 909,'+
+          '"neighborhood": "Bauxita",'+
+          '"zipcode": "35400000",'+
+          '"city": "Ouro Preto",'+
+          '"state": "MG"'+
+        '},'+
+        '"customer": {'+
+          '"name": "Gorbadoc Oldbuck",'+
+          '"email": "oldbuck@gerencianet.com.br",'+
+          '"cpf": "04267484171",'+
+          '"birth": "1977-01-15",'+
+          '"phone_number": "5144916523"'+
+        '}'+
+      '}'+
+    '}'+
+  '}';
+
+  Result := ExecuteGerenciaNetRequest( 'payOneStep','','',Body );
 end;
 
 

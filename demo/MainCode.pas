@@ -153,6 +153,8 @@ begin
     30 : DisplayServerResponse(CreateChargeBalanceSheet(Id));
     31 : DisplayServerResponse(SettleCharge(Id));
     32 : DisplayServerResponse(settleCarnetParcel(Id, CarnetParcel));
+    33 : DisplayServerResponse(PayOneStepWithBillet);     //one-step-billet
+    34 : DisplayServerResponse(PayOneStepWithCard);     //one-step-card
   end;
 end;
 
@@ -161,7 +163,7 @@ var Option : Integer;
 begin
   Option := Integer(Actions.ItemIndex);
   case Option of
-    0,9,19,22,29 : begin
+    0,9,19,22,29,33,34 : begin
       txtId.Enabled:= False;
       txtCarnetParcel.Enabled := False;
       txtToken.Enabled := False

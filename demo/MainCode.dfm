@@ -497,7 +497,9 @@ object MainFrm: TMainFrm
       'Get Installments'
       'Create Charge Balance Sheet '
       'Settle Charge'
-      'Settle Carnet Parcel')
+      'Settle Carnet Parcel'
+      'Create One Step Billet'
+      'Create One Step Card')
   end
   object txtToken: TEdit
     Left = 108
