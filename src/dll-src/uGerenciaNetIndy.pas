@@ -18,7 +18,7 @@ threadvar ClientID, ClientSecret, Environment, ConfigFileName,
           ProxyPort: Integer;
           ExpireDateTime : TDateTime;
 
-const API_SDK = 'delphi-3.0.2';
+const API_SDK = 'delphi-3.1.0';
 
 implementation
 
