@@ -1,3 +1,8 @@
+# 4.0.0
+
+- Fix: Refatoração da SDK de Delphi
+- Add: Endpoints do Pix.
+
 # 3.1.0
 
 - Add: New endpoint (oneStep)
