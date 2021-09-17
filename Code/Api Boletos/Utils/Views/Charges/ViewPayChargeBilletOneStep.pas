@@ -202,7 +202,7 @@ begin
 
   ClassChargeCreate.Payment.Billet.Configurations := Conf;
 
-  ClassChargeCreate.Payment.Billet.ExpireAt := FormatDateTime( 'yyyy-mm-dd', Today + 10 );
+  ClassChargeCreate.Payment.Billet.ExpireAt := txtExpire.Text;;
   ClassChargeCreate.Payment.Billet.Message := txtMessage.Text;
 
   strConcat := Concat(ClassChargeItem.AsJSON(False, False), ClassChargeCreate.AsJSON(False, False));
