@@ -1,5 +1,9 @@
 # 4.0.0
 
+- Add: Correção nas datas de Expiração.
+ 
+# 4.0.0
+
 - Fix: Refatoração da SDK de Delphi
 - Add: Endpoints do Pix.
 
