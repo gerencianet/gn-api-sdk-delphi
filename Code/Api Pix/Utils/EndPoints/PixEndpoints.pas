@@ -76,7 +76,7 @@ begin
         WriteStringToStream(JsonToSend, Modal.Body, IndyTextEncoding_UTF8);
         JsonToSend.Position := 0;
 
-        sResponse := HttpClient.Post( MainPix.frmPix.Enviroment  + '/v2/pix', JsonToSend);
+        sResponse := HttpClient.Put( MainPix.frmPix.Enviroment  + '/v2/gn/pix/' + Modal.txtIdEnvio.Text, JsonToSend);
 
         MainPix.frmPix.MemoResponse.text := sresponse;
       end;
