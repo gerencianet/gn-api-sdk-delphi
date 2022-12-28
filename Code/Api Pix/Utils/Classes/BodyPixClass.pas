@@ -9,6 +9,8 @@ Type
   TFavored = record
     [Alias('chave')]
     Key: String;
+    [Alias('cpf')] Cpf: String;
+
   end;
 
   TPayer = record

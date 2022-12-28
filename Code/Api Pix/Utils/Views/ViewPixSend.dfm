@@ -2,7 +2,7 @@ object ViewPixSend: TViewPixSend
   Left = 0
   Top = 0
   Caption = 'Modal da Requisi'#231#227'o'
-  ClientHeight = 261
+  ClientHeight = 327
   ClientWidth = 584
   Color = 6001140
   Font.Charset = DEFAULT_CHARSET
@@ -18,13 +18,14 @@ object ViewPixSend: TViewPixSend
     Left = 0
     Top = 0
     Width = 584
-    Height = 261
+    Height = 327
     Align = alClient
     Caption = '*Campos Obrigat'#243'rios'
     TabOrder = 0
+    ExplicitHeight = 638
     object btnConfirmRequest: TButton
-      Left = 286
-      Top = 226
+      Left = 290
+      Top = 290
       Width = 291
       Height = 32
       Caption = 'Confirmar a Requisi'#231#227'o'
@@ -32,8 +33,8 @@ object ViewPixSend: TViewPixSend
       OnClick = btnConfirmRequestClick
     end
     object btnCancelRequest: TButton
-      Left = 8
-      Top = 226
+      Left = 3
+      Top = 290
       Width = 275
       Height = 32
       Caption = 'Cancelar a Requisi'#231#227'o'
@@ -43,29 +44,52 @@ object ViewPixSend: TViewPixSend
     object GroupBox1: TGroupBox
       Left = 7
       Top = 16
-      Width = 569
-      Height = 208
+      Width = 1027
+      Height = 268
       Caption = 'Body da Requisi'#231#227'o'
       TabOrder = 0
       object Label3: TLabel
-        Left = 8
-        Top = 22
+        AlignWithMargins = True
+        Left = 5
+        Top = 18
         Width = 81
         Height = 13
+        Align = alTop
         Caption = '*Valor - Ex. 5.00'
+        Constraints.MaxWidth = 81
+        Constraints.MinWidth = 81
+        ExplicitLeft = 8
+        ExplicitTop = 22
+      end
+      object Label1: TLabel
+        AlignWithMargins = True
+        Left = 5
+        Top = 49
+        Width = 81
+        Height = 13
+        Margins.Top = 15
+        Align = alTop
+        Caption = '*Identificador'
+        Constraints.MaxWidth = 81
+        Constraints.MinWidth = 81
       end
       object txtValue: TEdit
-        Left = 95
-        Top = 19
+        Left = 98
+        Top = 15
         Width = 468
         Height = 21
+        Align = alCustom
+        Constraints.MaxHeight = 21
+        Constraints.MaxWidth = 468
+        Constraints.MinHeight = 21
+        Constraints.MinWidth = 468
         TabOrder = 0
       end
       object GroupBox2: TGroupBox
-        Left = 6
-        Top = 142
+        Left = 3
+        Top = 162
         Width = 560
-        Height = 51
+        Height = 95
         Caption = 'Favorecido'
         TabOrder = 2
         object Label4: TLabel
@@ -75,6 +99,13 @@ object ViewPixSend: TViewPixSend
           Height = 13
           Caption = '*Chave Pix - Ex. jo'#227'o@meuemail.com'
         end
+        object Label2: TLabel
+          Left = 6
+          Top = 64
+          Width = 128
+          Height = 13
+          Caption = '*CPF/CNPJ (Sem mascara)'
+        end
         object txtKeyFav: TEdit
           Left = 192
           Top = 21
@@ -82,10 +113,17 @@ object ViewPixSend: TViewPixSend
           Height = 21
           TabOrder = 0
         end
+        object txtDocumento: TEdit
+          Left = 192
+          Top = 61
+          Width = 365
+          Height = 21
+          TabOrder = 1
+        end
       end
       object GroupBox4: TGroupBox
-        Left = 6
-        Top = 51
+        Left = 3
+        Top = 73
         Width = 560
         Height = 83
         Caption = '*Pagador'
@@ -118,6 +156,18 @@ object ViewPixSend: TViewPixSend
           Height = 21
           TabOrder = 1
         end
+      end
+      object txtIdEnvio: TEdit
+        Left = 98
+        Top = 46
+        Width = 468
+        Height = 21
+        Align = alCustom
+        Constraints.MaxHeight = 21
+        Constraints.MaxWidth = 468
+        Constraints.MinHeight = 21
+        Constraints.MinWidth = 468
+        TabOrder = 3
       end
     end
   end

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, BodyPixClass, XSuperJSON, XSuperObject,
-  System.UITypes;
+  System.UITypes, System.JSON;
 
 type
   TViewPixSend = class(TForm)
@@ -23,6 +23,10 @@ type
     txtKeyPag: TEdit;
     txtPayerInfo: TEdit;
     Label6: TLabel;
+    Label1: TLabel;
+    txtIdEnvio: TEdit;
+    Label2: TLabel;
+    txtDocumento: TEdit;
     procedure btnConfirmRequestClick(Sender: TObject);
     procedure btnCancelRequestClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -63,6 +67,18 @@ begin
     if txtKeyFav.CanFocus then
       txtKeyFav.SetFocus;
   end
+  else if txtIdEnvio.Text = EmptyStr then
+  begin
+    MessageDlg('Identificador não pode ser vazio', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+    if txtIdEnvio.CanFocus then
+      txtIdEnvio.SetFocus;
+  end
+  else if txtDocumento.Text = EmptyStr then
+  begin
+    MessageDlg('Documento não pode ser vazio', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+    if txtDocumento.CanFocus then
+      txtDocumento.SetFocus;
+  end
   else
     ModalResult := mrOk;
 end;
@@ -86,6 +102,7 @@ begin
   FValue := txtValue.Text;
 
   FFavored.Key := txtKeyFav.Text;
+  FFavored.Cpf := txtDocumento.Text;
   ClassPix.Favored := FFavored;
 
   FPayer.key := txtKeyPag.Text;
@@ -96,8 +113,13 @@ begin
 
   BodyRequest := SO(ClassPix.AsJSON(False, False));
 
+
+
   if ClassPix.Payer.PayingInfo = EmptyStr then
     BodyRequest.Remove('infoPagador');
+
+
+
 
   Result := BodyRequest.AsJSON;
 end;
@@ -108,6 +130,8 @@ begin
   txtKeyFav.Text := '';
   txtKeyPag.Text := '';
   txtPayerInfo.Text := '';
+  txtIdEnvio.Text := '';
+  txtDocumento.Text := '';
 end;
 
 

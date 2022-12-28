@@ -196,7 +196,7 @@ object MainPix: TMainPix
       Top = 32
       Width = 197
       Height = 33
-      Caption = 'Post /v2/pix'
+      Caption = 'Put /v2/gn/pix'
       TabOrder = 1
       OnClick = pixSendClick
     end
